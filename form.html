@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script> -->
+    <script src="./js/form.js"></script> 
+    <title>Document</title>
+</head>
+<body>
+    <div class="container py-5">
+        <form action="" class="w-75" id="signIn">
+            <div class="form-group mb-3">
+                <label for="exampleInputEmail1" class="text-uppercase fw-bold fs-5 mb-2 ">địa chỉ email *</label>
+                <input type="email" name="user" class="form-control box-input" id="exampleInputEmail1" value="" onkeydown="checkVal()" >
+                <span class="d-none text-danger" id="error"> Không được để trống trường này</span>
+            </div>
+            <div class="form-group mb-3">
+                <label for="exampleInputPassword1" class="text-uppercase fw-bold fs-5 mb-2">Mật khẩu *</label>
+                <input type="password" name="password" class="form-control box-input pb-3" id="exampleInputPassword1">
+                <small id="emailHelp" class="form-text text-muted">Mật khẩu phải có ít nhất 8 ký tự và có cả chữ cái và số.</small>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" onclick="showPass()">
+                    <label class="form-check-label fs-6 pb-4" for="exampleCheck1">Hiện mật khẩu</label>
+                </div>
+            </div>
+            <button class="btn btn-dark rounded-0" onclick="myFunction()">
+                <span class="text-uppercase fw-bold fs-5 px-6">Đăng nhập</span>
+            </button>
+        </form>
+    </div>
+</body>
+<!-- <script src="./js/jquery-3.6.1.min.js"></script> -->
+
+</html>
