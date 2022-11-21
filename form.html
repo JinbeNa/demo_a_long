@@ -4,45 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <!-- <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script> -->
+    <link rel="stylesheet" href="./css/style.css">
 
     <title>Document</title>
 </head>
 <body>
-    <div class="container py-5">
-        <form action="" class="w-75" id="signIn">
-            <div class="form-group mb-3">
-                <label for="email" class="text-uppercase fw-bold fs-5 mb-2 ">địa chỉ email *</label>
-                <input type="email" name="user" class="form-control box-input" id="email" value=""  >
-                <span class="form-message"></span>
-            </div>
-            <div class="form-group mb-3">
-                <label for="password" class="text-uppercase fw-bold fs-5 mb-2">Mật khẩu *</label>
-                <input type="password" name="password" class="form-control box-input pb-3" id="password" value="">
-                <span class="form-message"></span>
-                <!-- <small id="emailHelp" class="form-text text-muted">Mật khẩu phải có ít nhất 8 ký tự và có cả chữ cái và số.</small> -->
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" >
-                    <label class="form-check-label fs-6 pb-4" for="exampleCheck1">Hiện mật khẩu</label>
-                </div>
-            </div>
-            <button class="btn btn-dark rounded-0" onclick="myFunction()">
-                <span class="text-uppercase fw-bold fs-5 px-6">Đăng nhập</span>
-            </button>
-        </form>
-    </div>
+    <div class="main">
 
+        <form action="" method="POST" class="form" id="form-1">
+          <h3 class="heading">Đăng nhập</h3>
+          <p class="desc"></p>
+      
+          <div class="spacer"></div>
+      
+          <div class="form-group">
+            <label for="fullname" class="form-label">Tên đầy đủ</label>
+            <input id="fullname" name="fullname" type="text" placeholder="VD: Nguyễn Văn A" class="form-control">
+            <span class="form-message"></span>
+          </div>
+      
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
+            <span class="form-message"></span>
+          </div>
+      
+          <div class="form-group">
+            <label for="password" class="form-label">Mật khẩu</label>
+            <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+            <span class="form-message"></span>
+          </div>
+      
+          <div class="form-group">
+            <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
+            <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
+            <span class="form-message"></span>
+          </div>
+
+          <div class="form-group" style="flex-direction: row;">
+            <input type="checkbox" onclick="showPass()">
+            <span  style="padding-left: 1rem;">Hiển thị mật khẩu</span>
+          </div>
+      
+          <button class="form-submit">Đăng ký</button>
+        </form>
+    
+    </div>
     <script src="./js/form.js"></script> 
     <script>
-    Validator({
-    form: 'signIn',
-    rules: [
-        Validator.isEmail('#email'),
-        Validator.isPassword('#password'),
-        ]
-    });
-    </script>
 
+        Validator({
+            form:'#form-1',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isRequired('#fullname'),
+                Validator.isRequired('#email'),
+                Validator.isEmail('#email'),
+                Validator.isRequired('#password'),
+                Validator.minLength('#password', 7),
+                Validator.isRequired('#password_confirmation'),
+                Validator.isConfirm('#password_confirmation', function(){
+                    return document.querySelector('#form-1 #password').value;
+                }, 'Mat khau nhap lai ko chinh xac')
+            ]
+        })
+
+    </script>
 </body>
 </html>
